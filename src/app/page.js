@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation'
 import Header from '../components/layout/Header'
 import Sidebar from '../components/layout/Sidebar'
 import { ArrowLeftOnRectangleIcon } from '@heroicons/react/24/outline'
+import UsersList from '../components/UsersList'
+
 export default function Home() {
   const router = useRouter()
   const supabase = createClientComponentClient()
@@ -33,6 +35,7 @@ export default function Home() {
       {/* Main Content */}
       <main className="ml-64 flex-1 p-8">
         <Header />
+        <UsersList />
       </main>
     </div>
   );
