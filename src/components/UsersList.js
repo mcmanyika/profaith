@@ -25,7 +25,11 @@ export default function UsersList() {
     fetchUsers()
   }, [])
 
-  if (loading) return <div className="flex justify-center p-4">Loading users...</div>
+  if (loading) return (
+    <div className="flex justify-center p-4">
+      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+    </div>
+  )
   if (error) return <div className="text-red-500 p-4">Error: {error}</div>
 
   return (
