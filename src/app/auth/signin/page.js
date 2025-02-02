@@ -2,13 +2,14 @@
 
 import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { createClient } from '../../../utils/supabase/client'
+
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 export default function SignIn() {
   const router = useRouter()
-  const supabase = createClientComponentClient()
+  const supabase = createClient()
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -81,8 +82,7 @@ export default function SignIn() {
           redirectTo={process.env.NEXT_PUBLIC_SITE_URL 
             ? `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`
             : `${window.location.origin}/auth/callback`}
-          onAuthSuccess={(session) => {
-            router.refresh();
+          onAuthSuccess={() => {
             router.push('/');
           }}
         />

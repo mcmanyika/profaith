@@ -1,12 +1,12 @@
 'use client'
 
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { createClient } from '../../utils/supabase/client'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 export default function Header() {
   const router = useRouter()
-  const supabase = createClientComponentClient()
+  const supabase = createClient();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
   const handleSignOut = async () => {
@@ -26,7 +26,7 @@ export default function Header() {
           >
             <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
               <span className="text-sm font-medium text-gray-600">
-                {/* Display first letter of email */}
+                {/* Display first letter of emai */}
                 U
               </span>
             </div>
