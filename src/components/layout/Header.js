@@ -26,7 +26,7 @@ export default function Header() {
           >
             <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
               <span className="text-sm font-medium text-gray-600">
-                {/* Display first letter of emai */}
+                {/* Display first letter of email */}
                 U
               </span>
             </div>
