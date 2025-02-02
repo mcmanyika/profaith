@@ -1,28 +1,12 @@
 'use client'
 
-import { createServerClient } from '@supabase/ssr'
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 export default function Header() {
   const router = useRouter()
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-    {
-      cookies: {
-        get(name) {
-          return document.cookie.split('; ').find(row => row.startsWith(name))?.split('=')[1]
-        },
-        set(name, value, options) {
-          document.cookie = `${name}=${value}; path=${options.path}; max-age=${options.maxAge}`
-        },
-        remove(name, options) {
-          document.cookie = `${name}=; path=${options.path}; expires=Thu, 01 Jan 1970 00:00:00 GMT`
-        },
-      }
-    }
-  )
+  const supabase = createClientComponentClient()
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
   const handleSignOut = async () => {
